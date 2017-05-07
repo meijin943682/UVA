@@ -2,21 +2,19 @@
 #include<string.h>
 
 
-char* travel(char* Pre, char* In, int size)
+void travel(char* Pre, char* In, int size)
 {
 	int i;
-	char* left, *right;
 	for(i = 0; i < size; i++)
 	{
-		if(*Pre == *(In + i))
+		if(Pre[0] == In[i])
 		{
-			left = travel(Pre + 1, In, i);
-			right = travel(Pre + i + 1, In + i + 1, size - i - 1);
-			printf("%c", *Pre);
-			return Pre;
+			travel(Pre + 1, In, i);
+			travel(Pre + i + 1, In + i + 1, size - i - 1);
+			printf("%c", Pre[0]);
+			return;
 		}
 	}
-	return NULL;
 }
 
 int main ()
